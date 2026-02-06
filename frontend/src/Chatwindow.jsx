@@ -3,6 +3,7 @@ import Chat from "./Chat.jsx";
 import { SomeContext } from "./SomeContext.jsx";
 import { useContext, useState , useEffect} from "react";
 import {ScaleLoader} from "react-spinners";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8081";
 
 
 function Chatwindow(){
@@ -24,7 +25,7 @@ const getReply = async () => {
        })
         };
         try{
-          const response =  await fetch("http://localhost:8081/api/chat", options);
+          const response =  await fetch(`${API_URL}/api/chat`, options);
           const res = await response.json();
           console.log(res);
           setReply(res.reply);
