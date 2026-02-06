@@ -15,17 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use("/api", chatRoutes);
-
-
-res.json({
-    message: "GPT API server is running",
-    status: "success",
-    endpoints:{
-        chat: "/api/chat"
-    }
-});
-
-
+ app.get("/",(req, res) =>{
+    res.send("gpt api server running")
+ });
 app.listen(PORT, () => {
     console.log(`server running on ${PORT}`);
     connectDB();
